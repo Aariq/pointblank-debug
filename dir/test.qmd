@@ -1,0 +1,20 @@
+---
+format: html
+---
+
+```{r}
+library(pointblank)
+tbl <-
+  dplyr::tibble(
+    a = c(5, 7, 6, 5, 8, 7),
+    b = c(7, 1, 0, 0, 0, 3)
+  )
+agent <-
+  create_agent(
+    tbl = tbl,
+    label = "`interrogate()` example"
+  ) %>%
+  col_vals_gt(columns = vars(a), value = 5) %>%
+  interrogate()
+agent
+```
